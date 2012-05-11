@@ -19,16 +19,17 @@ make main
     C:\sdl_codeblocks_example>gcc main.cpp -o main -lmingw32 -lSDLmain -lSDL -lSDL_image -I ./SDL
 */
 
-#define FUNCTIONNAME Filter //function being called after pressing F
+#define FUNCTIONNAME filter //function being called after pressing F
 #undef  FUNCTIONNAME
 #define FUNCTIONNAME Neguj
 
-void Filter(unsigned char * buf, int width,int height,int size,char bpp)
+void Filter2(unsigned char * buf, int width,int height,int size,char bpp)
 {
     //__asm__ volatile ()
     for(int i=0; i<width*height*bpp; i+=bpp)
         buf[i]+=10;
 }
+extern "C" void filter(unsigned char * buf, int width,int height,int size,char bpp);
 
 void Neguj(unsigned char * buf, int width,int height,int size,char bpp) {
     for(int i=0; i<width*height*bpp; ++i)
